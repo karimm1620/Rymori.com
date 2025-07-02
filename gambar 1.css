@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+:root {
+	--red: #FD043C;
+	--yellow: #FAC12C;
+	--blue: #2D4ACE;
+	--trans: all .5s cubic-bezier(.77, 0, .18, 1);
+}
+
+body {
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.container {
+	max-width: 600px;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+	position: relative;
+	overflow: hidden;
+}
+
+.container::before,
+.container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	transition: var(--trans);
+	height: 100%;
+}
+
+.container::before {
+	background: var(--red);
+	z-index: 10;
+	transition-delay: .2s;
+}
+
+.container::after {
+	background: var(--yellow);
+	z-index: 20;
+	transition-delay: .1s;
+}
+
+img {
+	width: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.text {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: var(--blue);
+	color: #fff;
+	padding: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	transition: var(--trans);
+	z-index: 30;
+	transition-delay: 0s;
+}
+
+.container:hover .text,
+.container:hover::before,
+.container:hover::after {
+	left: 0;
+}
+
+.container:hover .text {
+	transition-delay: .2s;
+}
+
+.container:hover::before {
+	transition-delay: 0s;
+}
+
+.text h1 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: .5rem;
+}
+
+.date {
+	margin-top: auto;
+	font-size: .875rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, .7);
+}
